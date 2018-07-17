@@ -15,4 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/', 'frontEndHomeController@getMaster')->name('home.master');
+Route::apiResource('/products', 'ProductController');
+
+Route::group(['prefix'=>'products'], function(){
+
+    Route::apiResource('/{product}/reviews', 'ReviewController');
+});
